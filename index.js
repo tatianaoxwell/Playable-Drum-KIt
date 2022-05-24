@@ -4,7 +4,16 @@ for (let i = 0; i < allButtons.length; i++) {
 	allButtons[i].addEventListener("click", function () {
 		let buttonPressed = this.innerHTML;
 		makeSound(buttonPressed);
+		changeButAnimation(buttonPressed);
 	});
+}
+
+
+document.addEventListener("keypress", playKey);
+
+function playKey (e) {
+	makeSound(e.key);
+	changeButAnimation(e.key);
 }
 
 function makeSound(key) {
@@ -36,4 +45,12 @@ function makeSound(key) {
 			break;
 	}
 	mySound.play();
+}
+
+function changeButAnimation (pressedKey) {
+const keyRef = document.querySelector("." + pressedKey);
+keyRef.classList.add("pressed");
+setTimeout(function(){
+	keyRef.classList.remove("pressed");
+}, 200);
 }
