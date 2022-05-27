@@ -1,13 +1,12 @@
 const allButtons = document.querySelectorAll(".drum");
 
-for (let i = 0; i < allButtons.length; i++) {
-	allButtons[i].addEventListener("click", function () {
+allButtons.forEach(button => {
+	button.addEventListener("click", function() {
 		let buttonPressed = this.innerHTML;
 		makeSound(buttonPressed);
 		changeButAnimation(buttonPressed);
-	});
-}
-
+	})
+})
 
 document.addEventListener("keypress", playKey);
 
